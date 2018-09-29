@@ -1,17 +1,18 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-8 col-md-8 col-sm-8">
+            <div class="col-lg-10 col-md-10 col-sm-10">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4">
-                <mat-form-field>
-                    <h3>
-                        <mat-select [(value)]="selected" (change)="carregaPainelNFCE(selected)">
-                            <mat-option value="8">Agosto 2018</mat-option>
-                            <mat-option value="9">Setembro 2018</mat-option>
+            <div class="col-lg-2 col-md-2 col-sm-2">
+                <h3>
+                    <mat-form-field>
+                        <mat-select placeholder="Escolha o Mês" [(ngModel)]="selectedValue" name="mes" (change)="carregaPainelNFCE()">
+                            <mat-option *ngFor="let mes of meses" [value]="mes.value">
+                                {{mes.viewValue}}
+                            </mat-option>
                         </mat-select>
-                    </h3>
-                </mat-form-field>
+                    </mat-form-field>
+                </h3>
             </div>
         </div>
         <div class="row">
@@ -28,7 +29,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">date_range</i> Agosto 2018
+                            <i class="material-icons">date_range</i> mes.viewValue
                         </div>
                     </div>
                 </div>
@@ -45,7 +46,7 @@
                     <div class="card-footer">
                         <div class="stats">
                             <!-- <i class="material-icons text-danger">warning</i> -->
-                            <i class="material-icons">date_range</i> Agosto 2018
+                            <i class="material-icons">date_range</i> {{selectedValue}}
                         </div>
                     </div>
                 </div>
